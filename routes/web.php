@@ -20,5 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/contact', function (App\Http\Requests\PublishContactFormRequest $form) {
     $form->persist();
+    return redirect('thanks');
 });
 Route::get('/contacts', 'ContactsController@index');
+Route::get('/thanks', 'PagesController@thanks');
