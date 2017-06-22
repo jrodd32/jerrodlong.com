@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="links">
-                    Lead developer at Doe-Anderson.
+                    Lead developer at Doe-Anderson. Live developing this site in Laravel. Coming along for the ride.
                 </div>
             </div>
         </div>
