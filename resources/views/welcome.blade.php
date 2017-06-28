@@ -49,7 +49,7 @@
                 font-size: 84px;
             }
 
-            .links > a {
+            .top-right.links > a {
                 color: #636b6f;
                 padding: 0 25px;
                 font-size: 12px;
@@ -57,6 +57,17 @@
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+            }
+
+            .statement > a {
+                color: #636b6f;
+                text-decoration: none;
+            }
+
+            .statement > a:hover,
+            .statement > a:focus,
+            .statement > a:active {
+                text-decoration: underline;
             }
 
             .m-b-md {
@@ -75,8 +86,8 @@
                     Jerrod Long
                 </div>
 
-                <div class="links">
-                    Lead developer at Doe-Anderson. Live developing this site in Laravel. Coming along for the ride.
+                <div class="statement">
+                    Lead developer at Doe-Anderson. Live developing this site in <a href="https://laravel.com/" target="_BLANK">Laravel</a>. Coming along for the ride.
                 </div>
             </div>
         </div>
