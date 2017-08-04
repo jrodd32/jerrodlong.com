@@ -78,6 +78,7 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
+                <a href="{{ url('/changelog') }}">Changelog</a>
                 <a href="{{ url('/contacts') }}">Contact</a>
             </div>
 
