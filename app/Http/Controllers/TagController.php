@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Blog;
 use App\Tag;
 use Illuminate\Http\Request;
 
-class BlogsController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::with(['tags'])->get();
-        return view('blogs.index', compact('blogs'));
+        //
     }
 
     /**
@@ -43,10 +41,10 @@ class BlogsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Blog  $blog
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show(Tag $tag)
     {
         //
     }
@@ -54,10 +52,10 @@ class BlogsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Blog  $blog
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit(Tag $tag)
     {
         //
     }
@@ -66,10 +64,10 @@ class BlogsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Blog  $blog
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, Tag $tag)
     {
         //
     }
@@ -77,10 +75,10 @@ class BlogsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Blog  $blog
+     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy(Tag $tag)
     {
         //
     }

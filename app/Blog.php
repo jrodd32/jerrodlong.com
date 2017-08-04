@@ -12,4 +12,9 @@ class Blog extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = ['title', 'excerpt', 'body'];
+
+    public function tags()
+    {
+        return $this->morphToMany('App\Tag', 'taggable');
+    }
 }

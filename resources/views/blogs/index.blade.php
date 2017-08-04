@@ -7,8 +7,19 @@
             <h1>Changelog</h1>
             <hr>
             @foreach($blogs as $blog)
-                <h2>{{ $blog->title }}</h2>
-                {{ $blog->body }}
+                <article class="blog">
+                    <h2>{{ $blog->title }}</h2>
+                    {{ $blog->body }}
+
+                    <div class="tags">
+                    @if($blog->tags)
+                        Tagged:
+                        @foreach($blog->tags as $tag)
+                            <span>{{ $tag->name }}</span>
+                        @endforeach
+                    @endif
+                    </div>
+                </article>
             @endforeach
         </div>
     </div>
