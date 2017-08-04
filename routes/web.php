@@ -25,9 +25,7 @@ Route::post('/contact', function (App\Http\Requests\PublishContactFormRequest $f
 Route::get('/contacts', 'ContactsController@index');
 Route::get('/thanks', 'PagesController@thanks');
 Route::get('/changelog', 'BlogsController@index');
-Route::get('/blog', function () {
-    return view('blogs.form');
-});
+Route::get('/blog', 'BlogsController@create');
 Route::post('/blog', function (App\Http\Requests\PublishBlogRequest $form) {
     $form->persist();
     return redirect('/blog');

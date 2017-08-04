@@ -26,7 +26,8 @@ class BlogsController extends Controller
      */
     public function create()
     {
-        //
+        $tags = Tag::pluck('name', 'id');
+        return view('blogs.form', compact('tags'));
     }
 
     /**
