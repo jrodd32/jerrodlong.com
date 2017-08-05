@@ -30,3 +30,10 @@ Route::post('/blog', function (App\Http\Requests\PublishBlogRequest $form) {
     $form->persist();
     return redirect('/blog');
 });
+
+Route::get('/projects', 'ProjectsController@index');
+Route::get('/project', 'ProjectsController@create');
+Route::post('/project', function (App\Http\Requests\PublishProjectRequest $form) {
+    $form->persist();
+    return redirect('/project');
+});
