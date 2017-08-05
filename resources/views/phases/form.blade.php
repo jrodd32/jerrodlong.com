@@ -8,6 +8,7 @@
                 {{ csrf_field() }}
 
                 @if (!empty($phase->id))
+                    {{ method_field('put') }}
                     <input type="hidden" name="id" value="{{ $phase->id }}">
                 @endif
 
@@ -25,7 +26,7 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <button type="submit" class="btn btn-submit">Publish Phase</button>
+                        <button type="submit" class="btn btn-submit">{{ empty($phase->id) ? 'Publish' : 'Update' }} Phase</button>
                     </div>
                 </div>
             </form>

@@ -33,8 +33,15 @@ Route::post('/blog', function (App\Http\Requests\PublishBlogRequest $form) {
     return redirect('/blog');
 });
 
-Route::get('/projects', 'ProjectsController@index');
-Route::get('/project', 'ProjectsController@create'); // Should be ADMIN only
+Route::get('/projects', function (App\Project $project) {
+    $projects = $project->with(['tags', 'phase'])->get();
+    return view('projects.index', compact('projects'));
+});
+Route::get('/project', function(App\Phase $phase, App\Tag $tag) {
+    $phases = $phase->pluck('name', 'id');
+    $tags = $tag->pluck('name', 'id');
+    return view('projects.form', compact('tags', 'phases'));
+}); // Should be ADMIN only
 Route::post('/project', function (App\Http\Requests\PublishProjectRequest $form) {
     $form->persist();
     return redirect('/project');
@@ -50,7 +57,7 @@ Route::get('/phase', function () {
 Route::get('/phase/{phase}', function (App\Phase $phase) {
     return view('phases.form', compact('phase'));
 });
-Route::post('/phase/{phase}', function (App\Http\Requests\EditPhaseRequest $form, App\Phase $phase) {
+Route::put('/phase/{phase}', function (App\Http\Requests\EditPhaseRequest $form, App\Phase $phase) {
     $form->persist($phase);
     return redirect('/phases');
 });
