@@ -8,8 +8,8 @@
             <hr>
             @foreach($phases as $phase)
                 <article class="phase">
-                    <h2>{{ $phase->name }}</h2>
-                    {{ $phase->description }}
+                    <h2><a href="/phase/{{ $phase->id }}">{{ $phase->name }}</a></h2>
+                    <p>{{ $phase->description }}</p>
                 </article>
             @endforeach
         </div>
