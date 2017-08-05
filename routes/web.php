@@ -52,9 +52,10 @@ Route::get('/phase/{phase}', function (App\Phase $phase) {
 });
 Route::post('/phase/{phase}', function (App\Http\Requests\EditPhaseRequest $form, App\Phase $phase) {
     $form->persist($phase);
-    return redirect('/phase');
+    return redirect('/phases');
 });
+
 Route::post('/phase', function (App\Http\Requests\PublishPhaseRequest $form) {
     $form->persist();
-    return redirect('/phase');
+    return redirect('/phases');
 });
