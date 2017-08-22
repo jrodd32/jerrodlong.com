@@ -40,12 +40,29 @@ Route::get('/projects', function (App\Project $project) {
 Route::get('/project', function(App\Phase $phase, App\Tag $tag) {
     $phases = $phase->pluck('name', 'id');
     $tags = $tag->pluck('name', 'id');
-    return view('projects.form', compact('tags', 'phases'));
+    $action = 'project';
+    $method = 'post';
+    return view('projects.form', compact('tags', 'phases', 'action', 'method'));
 }); // Should be ADMIN only
+
 Route::post('/project', function (App\Http\Requests\PublishProjectRequest $form) {
     $form->persist();
-    return redirect('/project');
+    return redirect('/projects');
 });
+
+Route::get('/project/{project}', function(App\Project $project, App\Phase $phase, App\Tag $tag) {
+    $projectTags = $project->tags()->pluck('tag_id')->toArray();
+    $phases = $phase->pluck('name', 'id');
+    $tags = $tag->pluck('name', 'id');
+    $action = 'project';
+    $method = 'post';
+    return view('projects.form', compact('project', 'phases', 'tags', 'projectTags', 'action', 'method'));
+}); // Should be ADMIN only
+
+Route::put('/project/{project}', function(App\Http\Requests\EditProjectRequest $form, App\Project $project) {
+    $form->persist($project);
+    return redirect('/projects');
+}); // Should be ADMIN only
 
 Route::get('/phases', function (App\Phase $phase) {
     $phases = $phase->where('deleted_at', '=', null)->get();
@@ -61,7 +78,6 @@ Route::put('/phase/{phase}', function (App\Http\Requests\EditPhaseRequest $form,
     $form->persist($phase);
     return redirect('/phases');
 });
-
 Route::post('/phase', function (App\Http\Requests\PublishPhaseRequest $form) {
     $form->persist();
     return redirect('/phases');

@@ -8,7 +8,7 @@
             <hr>
             @foreach($projects as $project)
                 <article class="project">
-                    <h2>{{ $project->name }}</h2>
+                    <h2>{{ $project->name }} @if (Auth::user()) <sub><a href="/project/{{ $project->id }}">Edit</a></sub> @endif</h2>
                     <sub title="{{ $project->phase->description }}">Phase: {{ $project->phase->name }}</sub>
                     <p>{{ $project->excerpt }}</p>
 

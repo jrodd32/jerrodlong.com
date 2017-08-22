@@ -3,10 +3,9 @@
 namespace App\Http\Requests;
 
 use App\Project;
-use App\Tag;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PublishProjectRequest extends FormRequest
+class EditProjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,6 +34,7 @@ class PublishProjectRequest extends FormRequest
     {
         $tags = !empty($this->tags) ? collect($this->tags) : '';
 
+        $this->id = !empty($this->id) ? $this->id : null;
         $this->excerpt = !empty($this->excerpt) ? $this->excerpt : null;
         $this->description = !empty($this->description) ? $this->description : null;
         $this->phase_id = !empty($this->phase_id) ? $this->phase_id : 1;
@@ -49,16 +49,18 @@ class PublishProjectRequest extends FormRequest
         ];
 
         try {
-            $project = Project::create($projectData);
+            $project = Project::find($this->id);
+            $project->tags()->detach();
+            $project->fill($projectData);
+            $project->save();
+
+            if (!empty($project) && !empty($tags)) {
+                $tags->each(function($tag) use ($project) {
+                    $project->tags()->attach($tag, ['taggable_id' => $project->id, 'taggable_type' => 'App\Project']);
+                });
+            }
         } catch (Exception $e) {
             dd($e);
         }
-
-        if (!empty($project) && !empty($tags)) {
-            $tags->each(function($tag) use ($project) {
-                $project->tags()->attach($tag, ['taggable_id' => $project->id, 'taggable_type' => 'App\Project']);
-            });
-        }
-
     }
 }
