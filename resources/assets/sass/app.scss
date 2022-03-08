@@ -7,3 +7,12 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.statement {
+  max-width: 80vw;
+  margin: 0 auto;
+
+  @media screen and (min-width: 767px) {
+    max-width: 60vw;
+  }
+}

@@ -74,13 +74,15 @@
                 margin-bottom: 30px;
             }
         </style>
+
+        <link rel="stylesheet" href="/css/app.css" />
     </head>
     <body>
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
-                <a href="{{ url('/projects') }}">Projects</a>
+                {{-- <a href="{{ url('/projects') }}">Projects</a>
                 <a href="{{ url('/changelog') }}">Changelog</a>
-                <a href="{{ url('/contacts') }}">Contact</a>
+                <a href="{{ url('/contacts') }}">Contact</a> --}}
             </div>
 
             <div class="content">
@@ -89,7 +91,17 @@
                 </div>
 
                 <div class="statement">
-                    Lead developer at Doe-Anderson. Live developing this site in <a href="https://laravel.com/" target="_BLANK">Laravel</a>. Coming along for the ride.
+                    <h2>Bio</h2>
+                    <p>I started my development journey at the age of 13 in the Area Technology Center attached to Montgomery County High School. The passion for development sparked into life there. That flame was stoked at Transylvania University in Lexington, KY. Post college I started my own web design &amp; development business, which I ran for 4 years prior to moving to Lousiville, KY to pursue agency life.</p>
+
+                    <h2>Current role</h2>
+                    <p>VP, Director of Software Development at Doe-Anderson. Currently leading a team of 6 developers with projects focused on the Laravel, Vue, & Statamic platforms.<p>
+
+                    <h2>Recent projects</h2>
+                    <ul>
+                      <li><a href="https://www.makersmark.com/whisky-drop" rel="noopener" target="_blank">Direct-to-consumer program for Maker's Mark</a></li>
+                      <li><a href="https://www.drink-ky.com/" rel="noopener" target="_blank">PWA for Kentucky Department of Agriculture</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
